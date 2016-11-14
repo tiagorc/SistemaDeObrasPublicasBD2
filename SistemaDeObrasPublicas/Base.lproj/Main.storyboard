@@ -61,7 +61,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vlj-6N-1q5">
                             <connections>
                                 <action selector="addHole:" destination="qQH-Cg-tsk" id="Jzu-VL-hXx"/>
-                                <segue destination="7l1-KK-ZJG" kind="show" id="DTK-40-YdL"/>
+                                <segue destination="XOk-Ee-nEk" kind="presentation" id="DTK-40-YdL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J6R-ik-yHm">
-                                <rect key="frame" x="0.0" y="94" width="375" height="92"/>
+                                <rect key="frame" x="132" y="94" width="243" height="92"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Localização Estimada" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kb6-pG-FyV">
@@ -101,31 +101,57 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTh-9c-fZm">
-                                <rect key="frame" x="0.0" y="270" width="375" height="92"/>
+                                <rect key="frame" x="132" y="270" width="243" height="92"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tamanho" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqT-Vw-YB8">
+                                <rect key="frame" x="16" y="130" width="71" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prioridade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpM-dT-jUh">
+                                <rect key="frame" x="16" y="306" width="79" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rJB-3N-3eX">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="hx6-CI-TMU">
+                                        <connections>
+                                            <action selector="takeAPictureOfHole:" destination="7l1-KK-ZJG" id="Jeh-TN-Mra"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5IY-hL-SCL"/>
+                                    <barButtonItem image="Marker" id="i6S-Lw-DXM">
+                                        <connections>
+                                            <action selector="getHolesLocation:" destination="7l1-KK-ZJG" id="y9o-Kr-oOf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="PFs-Xs-NZN"/>
+                                    <barButtonItem title="Salvar" id="wZm-0q-hHw">
+                                        <connections>
+                                            <action selector="saveNewButton:" destination="7l1-KK-ZJG" id="whL-Ef-fKx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="camera" id="hx6-CI-TMU">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Adicionar Buraco" id="gtG-V4-fMU">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="fxX-jc-iJX">
                             <connections>
-                                <action selector="takeAPictureOfHole:" destination="7l1-KK-ZJG" id="Jeh-TN-Mra"/>
+                                <action selector="cancelButton:" destination="7l1-KK-ZJG" id="lo5-YV-arm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5IY-hL-SCL"/>
-                        <barButtonItem title="PIN" id="i6S-Lw-DXM">
-                            <connections>
-                                <action selector="getHolesLocation:" destination="7l1-KK-ZJG" id="y9o-Kr-oOf"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="PFs-Xs-NZN"/>
-                        <barButtonItem title="Salvar" id="wZm-0q-hHw">
-                            <connections>
-                                <action selector="saveNewButton:" destination="7l1-KK-ZJG" id="whL-Ef-fKx"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="estimatedLocation" destination="kb6-pG-FyV" id="vXo-6g-FVW"/>
@@ -136,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTj-mx-GOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2861.5999999999999" y="138.98050974512745"/>
+            <point key="canvasLocation" x="3800.8000000000002" y="138.98050974512745"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hAm-kH-BpR">
@@ -161,7 +187,7 @@
         <scene sceneID="AFQ-Hp-kaZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qDc-nX-6IV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Usuários" id="eik-fc-VY9"/>
+                    <tabBarItem key="tabBarItem" title="Usuários" image="user" id="eik-fc-VY9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="l6b-TQ-YZ5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -228,7 +254,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JHF-zX-cGw">
                             <connections>
                                 <action selector="addUser:" destination="i47-TO-WxF" id="O8p-Uf-hNn"/>
-                                <segue destination="KrB-jR-0s7" kind="show" id="hOZ-JJ-uRZ"/>
+                                <segue destination="uFr-t5-eVS" kind="presentation" id="hOZ-JJ-uRZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -333,11 +359,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-YM-sRo">
+                            <pickerView clipsSubviews="YES" contentMode="scaleAspectFit" fixedFrame="YES" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-YM-sRo">
                                 <rect key="frame" x="294" y="174" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8aU-zl-ApG">
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aU-zl-ApG">
                                 <rect key="frame" x="16" y="402" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
@@ -345,22 +371,34 @@
                                 <rect key="frame" x="16" y="564" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JSy-NY-OYc">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="wMw-ae-cpp">
+                                        <connections>
+                                            <action selector="takeAPictureUser:" destination="KrB-jR-0s7" id="M8H-v6-WtH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="t0w-bE-iUO"/>
+                                    <barButtonItem title="Salvar" id="MgF-us-XPt">
+                                        <connections>
+                                            <action selector="saveUseer:" destination="KrB-jR-0s7" id="lvX-XE-UuW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="camera" id="wMw-ae-cpp">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Adicionar Usuário" id="Pfx-nx-Zy6">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="73R-SF-A1v">
                             <connections>
-                                <action selector="takeAPictureUser:" destination="KrB-jR-0s7" id="M8H-v6-WtH"/>
+                                <action selector="cancelButton:" destination="KrB-jR-0s7" id="Src-Xx-3Iv"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="16D-dj-YHB"/>
-                        <barButtonItem title="Salvar" id="Ve9-ct-1tV">
-                            <connections>
-                                <action selector="saveUseer:" destination="KrB-jR-0s7" id="rJa-IV-fVL"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="CPFUser" destination="tPt-Wy-jsw" id="1m0-UD-JBg"/>
@@ -382,13 +420,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8P-h5-k0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2863" y="834"/>
+            <point key="canvasLocation" x="3800.8000000000002" y="833.43328335832086"/>
         </scene>
         <!--Buracos-->
         <scene sceneID="J92-vI-rzv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rET-AH-n8D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Buracos" id="ydc-2U-am8"/>
+                    <tabBarItem key="tabBarItem" title="Buracos" image="hole" id="ydc-2U-am8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qmf-kC-26Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -403,5 +441,46 @@
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rFw-8Y-bhy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uFr-t5-eVS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sC7-Sh-lpg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KrB-jR-0s7" kind="relationship" relationship="rootViewController" id="t6b-Sb-LBg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byK-Nu-Wje" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2861.5999999999999" y="833.43328335832086"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fEx-AW-qP4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XOk-Ee-nEk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BE6-Mk-Yyb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7l1-KK-ZJG" kind="relationship" relationship="rootViewController" id="dDn-8J-OWR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7C-cP-RXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2861.5999999999999" y="138.98050974512745"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Marker" width="26" height="26"/>
+        <image name="hole" width="25" height="25"/>
+        <image name="user" width="26" height="26"/>
+    </resources>
 </document>

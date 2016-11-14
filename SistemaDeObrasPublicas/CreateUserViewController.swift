@@ -29,8 +29,17 @@ class CreateUserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.registrationIDFUPicker.delegate = self
+        self.registrationIDFUPicker.dataSource = self
 
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.tabBarController?.tabBar.isHidden == false {
+            self.self.tabBarController?.tabBar.isHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,11 +47,33 @@ class CreateUserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBAction func takeAPictureUser(_ sender: Any) {
     }
     
     @IBAction func saveUseer(_ sender: Any) {
     }
-    
 
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension CreateUserViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Consts().uf.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Consts().uf[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //do anything
+    }
 }
