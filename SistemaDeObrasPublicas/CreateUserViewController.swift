@@ -26,11 +26,19 @@ class CreateUserViewController: UIViewController {
     @IBOutlet weak var districtUser: UITextField!
     @IBOutlet weak var FUPicker: UIPickerView!
     
+    var imagePicker: UIImagePickerController!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registrationIDFUPicker.delegate = self
         self.registrationIDFUPicker.dataSource = self
+        
+        self.civilStateUserPicker.delegate = self
+        self.civilStateUserPicker.dataSource = self
+        
+        self.FUPicker.delegate = self
+        self.FUPicker.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -49,6 +57,12 @@ class CreateUserViewController: UIViewController {
     
     
     @IBAction func takeAPictureUser(_ sender: Any) {
+        self.imagePicker = UIImagePickerController()
+        self.imagePicker.delegate = self
+        self.imagePicker.sourceType = .camera
+        self.imagePicker.allowsEditing = true
+        
+        self.present(self.imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func saveUseer(_ sender: Any) {
@@ -57,7 +71,6 @@ class CreateUserViewController: UIViewController {
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension CreateUserViewController: UIPickerViewDelegate, UIPickerViewDataSource{
@@ -66,14 +79,34 @@ extension CreateUserViewController: UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Consts().uf.count
+        if pickerView == self.registrationIDFUPicker || pickerView == self.FUPicker {
+            return Consts().uf.count
+        }else if pickerView == civilStateUserPicker {
+            return Consts().civilState.count
+        }else {
+            return 0
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Consts().uf[row]
+        if pickerView == self.registrationIDFUPicker || pickerView == self.FUPicker {
+            return Consts().uf[row]
+        }else if pickerView == civilStateUserPicker {
+            return Consts().civilState[row]
+        }else {
+            return ""
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //do anything
+    }
+}
+
+extension CreateUserViewController : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.imagePicker.dismiss(animated: true, completion: nil)
+        let _ = info[UIImagePickerControllerOriginalImage] as? UIImage //do anything with the image
     }
 }

@@ -7,12 +7,29 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class CreateHoleViewController: UIViewController {
     @IBOutlet weak var holeSize: UIPickerView!
     @IBOutlet weak var estimatedLocation: UITextField!
     @IBOutlet weak var generalDescription: UITextField!
     @IBOutlet weak var holePriority: UIPickerView!
+    
+    var mapView: MKMapView!
+    
+    let locationManager = CLLocationManager()
+    
+    var imagePicker: UIImagePickerController!
+    
+    var ctrl = false
+    
+    var location: CLLocationCoordinate2D!
+    var holeImage: UIImage!
+    
+    var hole = HoleModel()
+    
+    var keyboardOpened: Bool = false
     
 
     override func viewDidLoad() {
@@ -23,16 +40,27 @@ class CreateHoleViewController: UIViewController {
         self.holePriority.delegate = self
         self.holePriority.dataSource = self
 
-        // Do any additional setup after loading the view.
+        //location
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        }
     }
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if self.tabBarController?.tabBar.isHidden == false {
-//            self.self.tabBarController?.tabBar.isHidden = true
-//        }
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateHoleViewController.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CreateHoleViewController.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,16 +69,56 @@ class CreateHoleViewController: UIViewController {
     }
     
     @IBAction func takeAPictureOfHole(_ sender: Any) {
+        self.imagePicker = UIImagePickerController()
+        self.imagePicker.delegate = self
+        self.imagePicker.sourceType = .camera
+        self.imagePicker.allowsEditing = true
+        
+        self.present(self.imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func getHolesLocation(_ sender: Any) {
+        self.locationManager.startUpdatingLocation()
     }
     
     @IBAction func saveNewButton(_ sender: Any) {
+        if self.holeImage == nil || self.location == nil {
+            self.showAlert(title: "Erro, existem campos vazios!", message: "Preencha os dados corretamente e tente novamente.")
+        }else {
+            if hole.holePriority == nil {
+                hole.holePriority = Consts().holePriority[0]
+            }
+            if hole.holeLenght == nil {
+                hole.holeLenght = Consts().holeSize[0]
+            }
+            hole.holeLatitude = String(self.location.latitude)
+            hole.holeLongitude = String(self.location.longitude)
+            hole.holeLocation = self.estimatedLocation.text
+            
+            print(hole) //salvar aqui
+        }
     }
     
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func showAlert (title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            alertController.dismiss(animated: true, completion: nil)
+        })
+        let _ = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            
+        }
+        alertController.addAction(ok)
+//        alertController.addAction(cancel)
+//        alertController.addTextField { (textField) -> Void in
+//            // Enter the textfiled customization code here.
+//            loginTextField = textField
+//            loginTextField?.placeholder = "Enter your login ID"
+//        }
+        present(alertController, animated: true, completion: nil)
     }
     
 }
@@ -86,8 +154,97 @@ extension CreateHoleViewController : UIPickerViewDataSource, UIPickerViewDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //do anything
+        if pickerView == self.holeSize {
+            self.hole.holeLenght = Consts().holeSize[row]
+        }else if pickerView == self.holePriority {
+            self.hole.holePriority = Consts().holePriority[row]
+        }
     }
     
+}
+
+extension CreateHoleViewController : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.imagePicker.dismiss(animated: true, completion: nil)
+        self.holeImage = info[UIImagePickerControllerOriginalImage] as? UIImage //do anything with the image
+    }
+}
+
+extension CreateHoleViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        
+        if self.ctrl == false {
+            self.ctrl = true
+            self.addMap(locValue: locValue)
+            self.location = locValue
+        }
+        
+        
+        self.locationManager.stopUpdatingLocation()
+    }
     
+    func addMap(locValue: CLLocationCoordinate2D) {
+//        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        mapView = MKMapView(frame: self.view.frame)
+        mapView.tag = 0
+        let  spanDegree = MKCoordinateSpan(latitudeDelta: 0.001,longitudeDelta: 0.001)
+        let region = MKCoordinateRegion(center: locValue , span: spanDegree)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: locValue.latitude, longitude: locValue.longitude)
+        
+        mapView.addAnnotation(annotation)
+        
+        
+        let btn = UIButton()
+        btn.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+        btn.center = self.view.center
+        btn.frame.origin.y = btn.frame.origin.y + self.view.frame.size.height/3
+        btn.backgroundColor = UIColor.black
+        btn.setTitle("Escolher", for: UIControlState.normal)
+        btn.addTarget(self, action: #selector(CreateHoleViewController().removeMap), for: UIControlEvents.touchUpInside)
+        mapView.addSubview(btn)
+        
+        self.view.addSubview(mapView)
+    }
+    
+    func removeMap () {
+        self.mapView.removeFromSuperview()
+        self.ctrl = false
+    }
+}
+
+
+extension CreateHoleViewController : UITextFieldDelegate {
+    
+    func keyboardWillShow(_ sender: Notification) {
+        if self.keyboardOpened == false {
+//            self.view.frame.origin.y -= 150
+            self.keyboardOpened = true
+        }
+    }
+    func keyboardWillHide(_ sender: Notification) {
+        if self.keyboardOpened == true {
+//            self.view.frame.origin.y = 0
+            self.keyboardOpened = false
+        }
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.estimatedLocation {
+            self.estimatedLocation.resignFirstResponder()
+            self.generalDescription.becomeFirstResponder()
+        }else if textField == self.generalDescription {
+            self.generalDescription.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.estimatedLocation.resignFirstResponder()
+        self.generalDescription.resignFirstResponder()
+    }
 }

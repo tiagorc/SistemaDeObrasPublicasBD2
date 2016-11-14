@@ -55,4 +55,11 @@ class Consts: NSObject {
                         "Médio",
                         "Grande",
     ]
+    
+    let civilState = ["Solteiro(a)",
+    "Casado(a)",
+    "Separado(a)",
+    "Divorciado(a)",
+    "Viúvo(a)",
+    ]
 }
