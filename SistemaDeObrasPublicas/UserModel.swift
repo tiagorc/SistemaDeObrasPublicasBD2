@@ -12,6 +12,7 @@ class UserModel: NSObject {
     var userName: String!
     var userCPF: String!
     var userIdNumber: String!
+    var userIdOrgan: String!
     var userIdFederativeUnit: String!
     var userMothersName: String!
     var userFathersName: String!
@@ -19,4 +20,5 @@ class UserModel: NSObject {
     var naturalidade: String!
     var userCurrentRole: String!
     var estadoCivil: String!
+    var addressUser: AddressModel!
 }

@@ -91,6 +91,7 @@ class CreateHoleViewController: UIViewController {
             if hole.holeLenght == nil {
                 hole.holeLenght = Consts().holeSize[0]
             }
+            //verificar se os campos não estão vazios ..
             hole.holeLatitude = String(self.location.latitude)
             hole.holeLongitude = String(self.location.longitude)
             hole.holeLocation = self.estimatedLocation.text

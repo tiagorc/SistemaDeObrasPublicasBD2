@@ -6,6 +6,8 @@
 	<string>É necessário permitir o acesso aos serviços de localização.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>É necessário permitir o acesso à câmera para tirar fotos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>É necessário permitir o acesso às fotos.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

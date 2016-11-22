@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2730CC2F1DC75D0F006172F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730CC2E1DC75D0F006172F3 /* AppDelegate.swift */; };
 		2730CC341DC75D0F006172F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2730CC321DC75D0F006172F3 /* Main.storyboard */; };
-		2730CC371DC75D0F006172F3 /* SistemaDeObrasPublicas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2730CC351DC75D0F006172F3 /* SistemaDeObrasPublicas.xcdatamodeld */; };
 		2730CC391DC75D0F006172F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2730CC381DC75D0F006172F3 /* Assets.xcassets */; };
 		2730CC3C1DC75D0F006172F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2730CC3A1DC75D0F006172F3 /* LaunchScreen.storyboard */; };
 		2730CC481DC75EDD006172F3 /* HoleViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730CC471DC75EDD006172F3 /* HoleViewControllerTableViewController.swift */; };
@@ -27,13 +26,16 @@
 		27735EEF1DCB6B43002C0EAB /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27735EEE1DCB6B43002C0EAB /* CreateUserViewController.swift */; };
 		27735EF11DCB6B53002C0EAB /* CreateHoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27735EF01DCB6B53002C0EAB /* CreateHoleViewController.swift */; };
 		27B2340B1DD935990037D8D5 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B2340A1DD935990037D8D5 /* Consts.swift */; };
+		27B2340D1DD9D12A0037D8D5 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B2340C1DD9D12A0037D8D5 /* AddressModel.swift */; };
+		27B2340F1DD9D1690037D8D5 /* DistrictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B2340E1DD9D1690037D8D5 /* DistrictModel.swift */; };
+		27B234111DD9D1910037D8D5 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B234101DD9D1910037D8D5 /* CityModel.swift */; };
+		27B234131DD9D1B00037D8D5 /* StateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B234121DD9D1B00037D8D5 /* StateModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2730CC2B1DC75D0F006172F3 /* SistemaDeObrasPublicas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SistemaDeObrasPublicas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2730CC2E1DC75D0F006172F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2730CC331DC75D0F006172F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2730CC361DC75D0F006172F3 /* SistemaDeObrasPublicas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SistemaDeObrasPublicas.xcdatamodel; sourceTree = "<group>"; };
 		2730CC381DC75D0F006172F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2730CC3B1DC75D0F006172F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2730CC3D1DC75D0F006172F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +61,10 @@
 		27735EEE1DCB6B43002C0EAB /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		27735EF01DCB6B53002C0EAB /* CreateHoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateHoleViewController.swift; sourceTree = "<group>"; };
 		27B2340A1DD935990037D8D5 /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		27B2340C1DD9D12A0037D8D5 /* AddressModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		27B2340E1DD9D1690037D8D5 /* DistrictModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistrictModel.swift; sourceTree = "<group>"; };
+		27B234101DD9D1910037D8D5 /* CityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		27B234121DD9D1B00037D8D5 /* StateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +107,6 @@
 				2730CC381DC75D0F006172F3 /* Assets.xcassets */,
 				2730CC3A1DC75D0F006172F3 /* LaunchScreen.storyboard */,
 				2730CC3D1DC75D0F006172F3 /* Info.plist */,
-				2730CC351DC75D0F006172F3 /* SistemaDeObrasPublicas.xcdatamodeld */,
 			);
 			path = SistemaDeObrasPublicas;
 			sourceTree = "<group>";
@@ -129,6 +134,10 @@
 			isa = PBXGroup;
 			children = (
 				2730CC501DC7624E006172F3 /* UserModel.swift */,
+				27B2340E1DD9D1690037D8D5 /* DistrictModel.swift */,
+				27B2340C1DD9D12A0037D8D5 /* AddressModel.swift */,
+				27B234121DD9D1B00037D8D5 /* StateModel.swift */,
+				27B234101DD9D1910037D8D5 /* CityModel.swift */,
 				2730CC521DC763A1006172F3 /* HoleModel.swift */,
 			);
 			name = Model;
@@ -255,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2730CC511DC7624E006172F3 /* UserModel.swift in Sources */,
+				27B234111DD9D1910037D8D5 /* CityModel.swift in Sources */,
 				27B2340B1DD935990037D8D5 /* Consts.swift in Sources */,
 				2730CC4C1DC760C8006172F3 /* UserTableViewController.swift in Sources */,
 				2730CC4F1DC76140006172F3 /* CustomUserTableViewCell.swift in Sources */,
@@ -262,12 +272,14 @@
 				275757101DD63AC700B0B06E /* FMDatabaseQueue.m in Sources */,
 				275757111DD63AC700B0B06E /* FMDatabaseAdditions.m in Sources */,
 				2730CC481DC75EDD006172F3 /* HoleViewControllerTableViewController.swift in Sources */,
+				27B234131DD9D1B00037D8D5 /* StateModel.swift in Sources */,
 				275757121DD63AC700B0B06E /* FMDatabasePool.m in Sources */,
+				27B2340F1DD9D1690037D8D5 /* DistrictModel.swift in Sources */,
 				27735EEF1DCB6B43002C0EAB /* CreateUserViewController.swift in Sources */,
 				2757570F1DD63AC700B0B06E /* FMResultSet.m in Sources */,
 				27735EF11DCB6B53002C0EAB /* CreateHoleViewController.swift in Sources */,
 				2730CC4A1DC75F35006172F3 /* CustomRoleCellTableViewCell.swift in Sources */,
-				2730CC371DC75D0F006172F3 /* SistemaDeObrasPublicas.xcdatamodeld in Sources */,
+				27B2340D1DD9D12A0037D8D5 /* AddressModel.swift in Sources */,
 				2757570E1DD63AC700B0B06E /* FMDatabase.m in Sources */,
 				2730CC2F1DC75D0F006172F3 /* AppDelegate.swift in Sources */,
 			);
@@ -443,19 +455,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		2730CC351DC75D0F006172F3 /* SistemaDeObrasPublicas.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				2730CC361DC75D0F006172F3 /* SistemaDeObrasPublicas.xcdatamodel */,
-			);
-			currentVersion = 2730CC361DC75D0F006172F3 /* SistemaDeObrasPublicas.xcdatamodel */;
-			path = SistemaDeObrasPublicas.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2730CC231DC75D0F006172F3 /* Project object */;
 }

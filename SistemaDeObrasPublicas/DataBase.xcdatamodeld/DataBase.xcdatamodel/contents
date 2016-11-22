@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddressModel" representedClassName="AddressModel" syncable="YES" codeGenerationType="class">
+        <attribute name="addressDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cep" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="federativeUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CityModel" inverseName="address" inverseEntity="CityModel" syncable="YES"/>
+        <relationship name="district" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DistrictModel" inverseName="address" inverseEntity="DistrictModel" syncable="YES"/>
+        <relationship name="state" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StateModel" inverseName="address" inverseEntity="StateModel" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="address" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="CityModel" representedClassName="CityModel" syncable="YES" codeGenerationType="class">
+        <attribute name="cityDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressModel" inverseName="city" inverseEntity="AddressModel" syncable="YES"/>
+    </entity>
+    <entity name="DistrictModel" representedClassName="DistrictModel" syncable="YES" codeGenerationType="class">
+        <attribute name="districtDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressModel" inverseName="district" inverseEntity="AddressModel" syncable="YES"/>
+    </entity>
+    <entity name="StateModel" representedClassName="StateModel" syncable="YES" codeGenerationType="class">
+        <attribute name="stateDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressModel" inverseName="state" inverseEntity="AddressModel" syncable="YES"/>
+    </entity>
+    <entity name="Thumbnail" representedClassName="Thumbnail" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="thumbnail" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="civilState" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="naturalidade" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userCPF" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userCurrentRole" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userFathersName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userIdFederativeUnit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userIdNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userIdOrgan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userMothersName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressModel" inverseName="user" inverseEntity="AddressModel" syncable="YES"/>
+        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thumbnail" inverseName="user" inverseEntity="Thumbnail" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AddressModel" positionX="-18" positionY="36" width="128" height="150"/>
+        <element name="CityModel" positionX="-36" positionY="18" width="128" height="75"/>
+        <element name="DistrictModel" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="StateModel" positionX="-54" positionY="0" width="128" height="75"/>
+        <element name="User" positionX="0" positionY="99" width="128" height="255"/>
+        <element name="Thumbnail" positionX="-27" positionY="135" width="128" height="90"/>
+    </elements>
+</model>
