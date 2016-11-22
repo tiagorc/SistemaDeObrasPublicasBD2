@@ -81,7 +81,7 @@ class CreateUserViewController: UIViewController {
     }
     
     @IBAction func saveUseer(_ sender: Any) {
-        var users = self.getUsers()
+        var users = Database().getAllUsers()
         
         let id = users.count
         
@@ -120,17 +120,6 @@ class CreateUserViewController: UIViewController {
 
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    private func getUsers() -> [UserModel] {
-        
-        var users: [UserModel] = []
-        let defaults = UserDefaults.standard
-        if let data  = defaults.object(forKey: "users")  {
-            let u = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [UserModel]
-            users = u
-        }
-        return users
     }
 }
 

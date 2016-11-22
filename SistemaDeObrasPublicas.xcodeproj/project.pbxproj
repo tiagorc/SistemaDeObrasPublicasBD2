@@ -17,6 +17,10 @@
 		2730CC4F1DC76140006172F3 /* CustomUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730CC4E1DC76140006172F3 /* CustomUserTableViewCell.swift */; };
 		2730CC511DC7624E006172F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730CC501DC7624E006172F3 /* UserModel.swift */; };
 		2730CC531DC763A1006172F3 /* HoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2730CC521DC763A1006172F3 /* HoleModel.swift */; };
+		273E8D901DE4FFFB006D858C /* DamageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D8F1DE4FFFB006D858C /* DamageModel.swift */; };
+		273E8D921DE502AE006D858C /* CreateDamageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D911DE502AE006D858C /* CreateDamageViewController.swift */; };
+		273E8D941DE50BA9006D858C /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D931DE50BA9006D858C /* Database.swift */; };
+		273E8D961DE50C5B006D858C /* DamagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D951DE50C5B006D858C /* DamagesTableViewController.swift */; };
 		2757570E1DD63AC700B0B06E /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 275757051DD63AC700B0B06E /* FMDatabase.m */; };
 		2757570F1DD63AC700B0B06E /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 275757071DD63AC700B0B06E /* FMResultSet.m */; };
 		275757101DD63AC700B0B06E /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 275757091DD63AC700B0B06E /* FMDatabaseQueue.m */; };
@@ -45,6 +49,10 @@
 		2730CC4E1DC76140006172F3 /* CustomUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUserTableViewCell.swift; sourceTree = "<group>"; };
 		2730CC501DC7624E006172F3 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2730CC521DC763A1006172F3 /* HoleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoleModel.swift; sourceTree = "<group>"; };
+		273E8D8F1DE4FFFB006D858C /* DamageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageModel.swift; sourceTree = "<group>"; };
+		273E8D911DE502AE006D858C /* CreateDamageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateDamageViewController.swift; sourceTree = "<group>"; };
+		273E8D931DE50BA9006D858C /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		273E8D951DE50C5B006D858C /* DamagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamagesTableViewController.swift; sourceTree = "<group>"; };
 		275757021DD63AC600B0B06E /* SistemaDeObrasPublicas-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SistemaDeObrasPublicas-Bridging-Header.h"; sourceTree = "<group>"; };
 		275757031DD63AC700B0B06E /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		275757041DD63AC700B0B06E /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -116,7 +124,9 @@
 			children = (
 				2730CC471DC75EDD006172F3 /* HoleViewControllerTableViewController.swift */,
 				2730CC4B1DC760C8006172F3 /* UserTableViewController.swift */,
+				273E8D911DE502AE006D858C /* CreateDamageViewController.swift */,
 				27735EF01DCB6B53002C0EAB /* CreateHoleViewController.swift */,
+				273E8D951DE50C5B006D858C /* DamagesTableViewController.swift */,
 				27735EEE1DCB6B43002C0EAB /* CreateUserViewController.swift */,
 			);
 			name = Controller;
@@ -134,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				2730CC501DC7624E006172F3 /* UserModel.swift */,
+				273E8D8F1DE4FFFB006D858C /* DamageModel.swift */,
 				27B2340E1DD9D1690037D8D5 /* DistrictModel.swift */,
 				27B2340C1DD9D12A0037D8D5 /* AddressModel.swift */,
 				27B234121DD9D1B00037D8D5 /* StateModel.swift */,
@@ -147,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				2730CC2E1DC75D0F006172F3 /* AppDelegate.swift */,
+				273E8D931DE50BA9006D858C /* Database.swift */,
 				27B2340A1DD935990037D8D5 /* Consts.swift */,
 				2730CC4D1DC76125006172F3 /* CustomCells */,
 			);
@@ -271,14 +283,18 @@
 				2730CC531DC763A1006172F3 /* HoleModel.swift in Sources */,
 				275757101DD63AC700B0B06E /* FMDatabaseQueue.m in Sources */,
 				275757111DD63AC700B0B06E /* FMDatabaseAdditions.m in Sources */,
+				273E8D921DE502AE006D858C /* CreateDamageViewController.swift in Sources */,
 				2730CC481DC75EDD006172F3 /* HoleViewControllerTableViewController.swift in Sources */,
 				27B234131DD9D1B00037D8D5 /* StateModel.swift in Sources */,
 				275757121DD63AC700B0B06E /* FMDatabasePool.m in Sources */,
+				273E8D941DE50BA9006D858C /* Database.swift in Sources */,
 				27B2340F1DD9D1690037D8D5 /* DistrictModel.swift in Sources */,
+				273E8D961DE50C5B006D858C /* DamagesTableViewController.swift in Sources */,
 				27735EEF1DCB6B43002C0EAB /* CreateUserViewController.swift in Sources */,
 				2757570F1DD63AC700B0B06E /* FMResultSet.m in Sources */,
 				27735EF11DCB6B53002C0EAB /* CreateHoleViewController.swift in Sources */,
 				2730CC4A1DC75F35006172F3 /* CustomRoleCellTableViewCell.swift in Sources */,
+				273E8D901DE4FFFB006D858C /* DamageModel.swift in Sources */,
 				27B2340D1DD9D12A0037D8D5 /* AddressModel.swift in Sources */,
 				2757570E1DD63AC700B0B06E /* FMDatabase.m in Sources */,
 				2730CC2F1DC75D0F006172F3 /* AppDelegate.swift in Sources */,

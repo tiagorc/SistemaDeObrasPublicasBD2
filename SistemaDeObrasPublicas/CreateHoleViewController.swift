@@ -88,9 +88,9 @@ class CreateHoleViewController: UIViewController {
         if self.holeImage == nil || self.location == nil {
             self.showAlert(title: "Erro, existem campos vazios!", message: "Preencha os dados corretamente e tente novamente.")
         }else {
-            var buracos: [HoleModel] = self.getAllHoles()
+            var buracos: [HoleModel] = Database().getAllHoles()
             
-            let id = 1 //buracos.count
+            let id = buracos.count
             
             if self.prioridade == "" {
                 self.prioridade = Consts().holePriority[0]
@@ -116,18 +116,6 @@ class CreateHoleViewController: UIViewController {
             
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    func getAllHoles() -> [HoleModel]{
-        var buracos: [HoleModel] = []
-        
-        let defaults = UserDefaults.standard
-        if let data  = defaults.object(forKey: "buracos")  {
-            let b = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [HoleModel]
-            buracos = b
-        }
-        
-        return buracos
     }
     
     @IBAction func cancelButton(_ sender: Any) {
