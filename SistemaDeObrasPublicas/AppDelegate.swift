@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        self.fmdbInitial(sql_stm: "")
         return true
     }
 
@@ -44,31 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
-    }
-    
-    //MARK: FMDB
-    func fmdbInitial(sql_stm: String) {
-        let manager = FileManager.default
-        let path = manager.urls(for: .documentDirectory, in: .userDomainMask)
-        
-        let databasePath = path[0].appendingPathComponent("database.io").path
-        
-        if !manager.fileExists(atPath: databasePath ) {
-            let contactDB = FMDatabase(path: databasePath)
-            if contactDB == nil {
-                print("Error: \(contactDB?.lastErrorMessage()))")
-            }
-            
-            if (contactDB?.open())! {
-                if !(contactDB?.executeStatements(sql_stm))! {
-                    print("Error: \(contactDB?.lastErrorMessage()))")
-                }
-                
-                contactDB?.close()
-            }else {
-                print("Error: \(contactDB?.lastErrorMessage()))")
-            }
-        }
     }
 
     // MARK: - Core Data stack

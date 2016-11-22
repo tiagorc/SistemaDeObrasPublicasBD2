@@ -81,7 +81,6 @@ class CreateUserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     @IBAction func takeAPictureUser(_ sender: Any) {
         self.imagePicker = UIImagePickerController()
         self.imagePicker.delegate = self
@@ -92,41 +91,56 @@ class CreateUserViewController: UIViewController {
     }
     
     @IBAction func saveUseer(_ sender: Any) {
+        var users = self.getUsers()
         
-        //\(self.registrationIDOrgao.text),
+        let id = users.count
         
-        let civilState = self.civilState != nil ? self.civilState : Consts().civilState[0]
-        let name = self.nameUser.text
-        let cpf = self.CPFUser.text
-        let rg = self.registrationIDUser.text
+        let nome = self.nameUser.text!
+        let cpf = self.CPFUser.text!
+        let rg = self.registrationIDUser.text!
         let ufrg = self.civilState != nil ? self.civilState : Consts().civilState[0]
+        let nomemae = self.motherNameUser.text!
+        let nomepai = self.fatherNameUser.text!
+        let email = self.emailUser.text!
+        let naturalidade = self.naturalityUser.text!
+        let cargo = self.roleUser.text!
+        let estadocivil = self.civilState != nil ? self.civilState : Consts().civilState[0]
         
-        let sqlInserUser = "INSERT INTO Usuario (idUsuario, nomeUsuario, CPFUsuario, numeroIdentidade, UFIdentidade, nomeMae, nomePai, email, naturalidade, cargoAtual, estadoCivil) VALUES ('1', '\(name!)', '\(cpf!)', '\(rg!)', '\(ufrg!)',  '\(self.motherNameUser.text!)','\(self.fatherNameUser.text!)', '\(self.emailUser.text!)', '\(self.naturalityUser.text!)','\(self.roleUser.text!)', '\(civilState!)')" //, \(self.cepUser.text), \(self.cityUser.text), \(self.districtUser.text), (self.federativeUnit != nil ? self.federativeUnit : Consts().uf[0])"
+
+        let uf = self.federativeUnit != nil ? self.federativeUnit : Consts().uf[0]
         
-        print(sqlInserUser)
-        self.createUser(insertSQL: sqlInserUser)
-    }
-    
-    func createUser(insertSQL : String) {
         
-        let contactDB = FMDatabase(path: self.databasePath)
+        let bairro = DistrictModel(id: id, bairro: self.districtUser.text!)
+        let cidade = CityModel(id: id, cidade: self.cityUser.text!)
+        let estado = StateModel(id: id, estado: "Brasil")
+        let endereco = AddressModel(id: id, endereco: "Endereço: ", cep: self.cepUser.text!, uf: uf!, bairro: bairro, estado: estado, cidade: cidade)
+        let user = UserModel(id: id, name: nome, CPF: cpf, rg: rg, orgaorg: "SSP", ufrg: ufrg!, nomemae: nomemae, nomepai: nomepai, email: email, naturalidade: naturalidade, cargo: cargo, estadocivil: estadocivil!, endereco: endereco)
         
-        if (contactDB?.open())! {
-            let result  = contactDB?.executeUpdate(insertSQL, withArgumentsIn: nil)
-            
-            if !result! {
-                print("Error: \(contactDB?.lastErrorMessage())")
-            }else {
-                print("salvo com sucesso")
-            }
-        }else {
-            print("Error: \(contactDB?.lastErrorMessage())")
-        }
+        users.append(user)
         
+        let defaults = UserDefaults.standard
+        let data: Data = NSKeyedArchiver.archivedData(withRootObject: users)
+        
+        defaults.set(data, forKey: "users")
+        defaults.synchronize()
+        
+        
+        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func getUsers() -> [UserModel] {
+        
+        var users: [UserModel] = []
+        let defaults = UserDefaults.standard
+        if let data  = defaults.object(forKey: "users")  {
+            let u = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [UserModel]
+            users = u
+        }
+        return users
     }
 }
 

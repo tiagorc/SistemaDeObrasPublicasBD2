@@ -8,6 +8,25 @@
 
 import UIKit
 
-class DistrictModel: NSObject {
+class DistrictModel: NSObject, NSCoding {
+    var id: Int!
     var districtDescription: String!
+    
+    
+    init(id: Int, bairro: String) {
+        self.id = id
+        self.districtDescription = bairro
+    }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let id = aDecoder.decodeObject(forKey: "idbairro") as! Int
+        let bairro = aDecoder.decodeObject(forKey: "bairro") as! String
+        
+        self.init(id: id, bairro: bairro)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "idbairro")
+        aCoder.encode(districtDescription, forKey: "bairro")
+    }
 }

@@ -9,15 +9,13 @@
 import UIKit
 
 class UserTableViewController: UITableViewController {
-
+    
+    var users: [UserModel] = []
+    @IBOutlet var tableUsers: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +23,12 @@ class UserTableViewController: UITableViewController {
         
         if self.tabBarController?.tabBar.isHidden == true {
             self.self.tabBarController?.tabBar.isHidden = false
+        }
+        let defaults = UserDefaults.standard
+        if let data  = defaults.object(forKey: "users")  {
+            self.users = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [UserModel]
+            self.tableUsers.reloadData()
+            self.emptyTable(self.users as NSArray)
         }
     }
 
@@ -37,72 +41,43 @@ class UserTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.users.count
     }
-    
-    @IBAction func addUser(_ sender: AnyObject) {
-        print("Adc Usuario")
-    }
-    
 
-    /*
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "users", for: indexPath) as! CustomUserTableViewCell
+        cell.titleUser.text = self.users[indexPath.row].userName
+        cell.imageUser.image = UIImage(named: "placeholder")
+        cell.descriptionUser.text = self.users[indexPath.row].userCurrentRole
 
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func emptyTable(_ Array:NSArray){
+        self.tableUsers.viewWithTag(1)?.removeFromSuperview()
+        if Array.count == 0 {
+            self.tableUsers.tableFooterView = UIView(frame: CGRect.zero)
+            self.tableUsers.backgroundColor = UIColor.clear
+            
+            let label = UILabel()
+            label.frame.size.height = 42
+            label.frame.size.width = self.tableUsers.frame.size.width
+            label.center = self.tableUsers.center
+            label.center.y = (self.tableUsers.frame.size.height/2)
+            label.numberOfLines = 2
+            label.textColor = UIColor.gray
+            label.text = "Sem Usuários Cadastrados"
+            label.textAlignment = .center
+            label.tag = 1
+            
+            self.tableUsers.addSubview(label)
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
