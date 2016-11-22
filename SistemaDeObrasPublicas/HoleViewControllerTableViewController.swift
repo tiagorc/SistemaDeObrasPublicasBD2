@@ -13,8 +13,13 @@ class HoleViewControllerTableViewController: UITableViewController {
     @IBOutlet weak var titleHole: UILabel!
     @IBOutlet weak var descriptionHole: UILabel!
 
+    @IBOutlet var tableHoles: UITableView!
+    var holes: [HoleModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,9 +31,13 @@ class HoleViewControllerTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if self.tabBarController?.tabBar.isHidden == true {
-//            self.self.tabBarController?.tabBar.isHidden = false
-//        }
+        let defaults = UserDefaults.standard
+        if let data  = defaults.object(forKey: "buracos")  {
+            self.holes = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [HoleModel]
+            self.tableHoles.reloadData()
+            self.emptyTable(self.holes as NSArray)
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,73 +49,48 @@ class HoleViewControllerTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    
-    @IBAction func addHole(_ sender: AnyObject) {
-        print("Adc Buraco")
+        return self.holes.count
     }
     
-
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "holes", for: indexPath) as! CustomRoleCellTableViewCell
+        
+        cell.titleRole.text = self.holes[indexPath.row].holeLocation
+//        if let image = self.holes[indexPath.row].image {
+//            let i = UIImage(data: image)
+//            cell.imageHole.image = i
+//        }else {
+            cell.imageHole.image = UIImage(named: "damageplaceholder")
+//        }
+        cell.descriptionHole.text = ("Prioridade: \(self.holes[indexPath.row].holePriority!)")
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func emptyTable(_ Array:NSArray){
+        self.tableHoles.viewWithTag(1)?.removeFromSuperview()
+        if Array.count == 0 {
+            self.tableHoles.tableFooterView = UIView(frame: CGRect.zero)
+            self.tableHoles.backgroundColor = UIColor.clear
+            
+            let label = UILabel()
+            label.frame.size.height = 42
+            label.frame.size.width = self.tableHoles.frame.size.width
+            label.center = self.tableHoles.center
+            label.center.y = (self.tableHoles.frame.size.height/2)
+            label.numberOfLines = 2
+            label.textColor = UIColor.gray
+            label.text = "Sem Buracos Cadastrados"
+            label.textAlignment = .center
+            label.tag = 1
+            
+            self.tableHoles.addSubview(label)
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

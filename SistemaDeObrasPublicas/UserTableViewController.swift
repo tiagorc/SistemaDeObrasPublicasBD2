@@ -21,9 +21,6 @@ class UserTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if self.tabBarController?.tabBar.isHidden == true {
-            self.self.tabBarController?.tabBar.isHidden = false
-        }
         let defaults = UserDefaults.standard
         if let data  = defaults.object(forKey: "users")  {
             self.users = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [UserModel]
@@ -53,7 +50,11 @@ class UserTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "users", for: indexPath) as! CustomUserTableViewCell
         cell.titleUser.text = self.users[indexPath.row].userName
-        cell.imageUser.image = UIImage(named: "placeholder")
+//        if let image = self.users[indexPath.row].image {
+//            cell.imageUser.image = image
+//        }else {
+            cell.imageUser.image = UIImage(named: "placeholder")
+//        }
         cell.descriptionUser.text = self.users[indexPath.row].userCurrentRole
 
         return cell

@@ -27,7 +27,10 @@ class CreateHoleViewController: UIViewController {
     var location: CLLocationCoordinate2D!
     var holeImage: UIImage!
     
-    var hole = HoleModel()
+//    var hole = HoleModel()
+    
+    var tamanho = String()
+    var prioridade = String()
     
     var keyboardOpened: Bool = false
     
@@ -85,19 +88,46 @@ class CreateHoleViewController: UIViewController {
         if self.holeImage == nil || self.location == nil {
             self.showAlert(title: "Erro, existem campos vazios!", message: "Preencha os dados corretamente e tente novamente.")
         }else {
-            if hole.holePriority == nil {
-                hole.holePriority = Consts().holePriority[0]
+            var buracos: [HoleModel] = self.getAllHoles()
+            
+            let id = 1 //buracos.count
+            
+            if self.prioridade == "" {
+                self.prioridade = Consts().holePriority[0]
             }
-            if hole.holeLenght == nil {
-                hole.holeLenght = Consts().holeSize[0]
+            if self.tamanho == "" {
+                self.tamanho = Consts().holeSize[0]
             }
             //verificar se os campos não estão vazios ..
-            hole.holeLatitude = String(self.location.latitude)
-            hole.holeLongitude = String(self.location.longitude)
-            hole.holeLocation = self.estimatedLocation.text
+            let latitude =  String(self.location.latitude)
+            let longitude = String(self.location.longitude)
+            let localizacao = self.estimatedLocation.text
             
-            print(hole) //salvar aqui
+            let buraco: HoleModel = HoleModel(id: id, tamanho: self.tamanho, localizacao: localizacao!, prioridade: self.prioridade, long: longitude, lat: latitude)
+            
+            
+            buracos.append(buraco)
+            
+            let defaults = UserDefaults.standard
+            let data: Data = NSKeyedArchiver.archivedData(withRootObject: buracos)
+            
+            defaults.set(data, forKey: "buracos")
+            defaults.synchronize()
+            
+            self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func getAllHoles() -> [HoleModel]{
+        var buracos: [HoleModel] = []
+        
+        let defaults = UserDefaults.standard
+        if let data  = defaults.object(forKey: "buracos")  {
+            let b = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [HoleModel]
+            buracos = b
+        }
+        
+        return buracos
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -156,9 +186,9 @@ extension CreateHoleViewController : UIPickerViewDataSource, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == self.holeSize {
-            self.hole.holeLenght = Consts().holeSize[row]
+            self.tamanho = Consts().holeSize[row]
         }else if pickerView == self.holePriority {
-            self.hole.holePriority = Consts().holePriority[row]
+            self.prioridade = Consts().holePriority[row]
         }
     }
     

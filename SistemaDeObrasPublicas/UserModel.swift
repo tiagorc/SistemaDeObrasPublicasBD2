@@ -37,6 +37,7 @@ class UserModel: NSObject, NSCoding {
         self.userCurrentRole = cargo
         self.estadoCivil = estadocivil
         self.addressUser = endereco
+//        self.image = image
     }
     
     required convenience init(coder aDecoder: NSCoder){
@@ -53,6 +54,7 @@ class UserModel: NSObject, NSCoding {
         let cargo = aDecoder.decodeObject(forKey: "cargo") as! String
         let estadocivil = aDecoder.decodeObject(forKey: "estadocivil") as! String
         let endereco = aDecoder.decodeObject(forKey: "endereco") as! AddressModel
+//        let image = aDecoder.decodeObject(forKey: "fotousuario") as! UIImage
         
         self.init(id: Int(id), name: nome, CPF: cpf, rg: rg, orgaorg: orgaorg, ufrg: ufrg, nomemae: nomemae, nomepai: nomepai, email: email, naturalidade: naturalidade, cargo: cargo, estadocivil: estadocivil, endereco: endereco)
     }
@@ -71,5 +73,7 @@ class UserModel: NSObject, NSCoding {
         aCoder.encode(userCurrentRole, forKey: "cargo")
         aCoder.encode(estadoCivil, forKey: "estadocivil")
         aCoder.encode(addressUser, forKey: "endereco")
+//        aCoder.encode(image, forKey: "fotousuario")
+        
     }
 }

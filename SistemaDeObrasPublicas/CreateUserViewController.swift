@@ -39,9 +39,6 @@ class CreateUserViewController: UIViewController {
     
     var imageUser = UIImage()
     
-    //FMDB
-    var databasePath = String()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,14 +50,7 @@ class CreateUserViewController: UIViewController {
         
         self.FUPicker.delegate = self
         self.FUPicker.dataSource = self
-        
-        let filemgr = FileManager.default
-        let dirPaths = filemgr.urls(for: .documentDirectory,
-                                    in: .userDomainMask)
-        
-        databasePath = dirPaths[0].appendingPathComponent("database.io").path
 
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -84,7 +74,7 @@ class CreateUserViewController: UIViewController {
     @IBAction func takeAPictureUser(_ sender: Any) {
         self.imagePicker = UIImagePickerController()
         self.imagePicker.delegate = self
-        self.imagePicker.sourceType = .photoLibrary
+        self.imagePicker.sourceType = .camera
         self.imagePicker.allowsEditing = true
         
         self.present(self.imagePicker, animated: true, completion: nil)
@@ -114,7 +104,7 @@ class CreateUserViewController: UIViewController {
         let cidade = CityModel(id: id, cidade: self.cityUser.text!)
         let estado = StateModel(id: id, estado: "Brasil")
         let endereco = AddressModel(id: id, endereco: "Endereço: ", cep: self.cepUser.text!, uf: uf!, bairro: bairro, estado: estado, cidade: cidade)
-        let user = UserModel(id: id, name: nome, CPF: cpf, rg: rg, orgaorg: "SSP", ufrg: ufrg!, nomemae: nomemae, nomepai: nomepai, email: email, naturalidade: naturalidade, cargo: cargo, estadocivil: estadocivil!, endereco: endereco)
+        let user = UserModel(id: id, name: nome, CPF: cpf, rg: rg, orgaorg: "SSP", ufrg: ufrg!, nomemae: nomemae, nomepai: nomepai, email: email, naturalidade: naturalidade, cargo: cargo, estadocivil: estadocivil!, endereco: endereco)//, image: self.imageUser)
         
         users.append(user)
         

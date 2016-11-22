@@ -60,7 +60,6 @@
 		275757141DD63B1A00B0B06E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		27735EEE1DCB6B43002C0EAB /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		27735EF01DCB6B53002C0EAB /* CreateHoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateHoleViewController.swift; sourceTree = "<group>"; };
-		27A39ABD1DE4BB9100CA645D /* database.io */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.io; sourceTree = "<group>"; };
 		27B2340A1DD935990037D8D5 /* Consts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		27B2340C1DD9D12A0037D8D5 /* AddressModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		27B2340E1DD9D1690037D8D5 /* DistrictModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistrictModel.swift; sourceTree = "<group>"; };
@@ -148,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				2730CC2E1DC75D0F006172F3 /* AppDelegate.swift */,
-				27A39ABD1DE4BB9100CA645D /* database.io */,
 				27B2340A1DD935990037D8D5 /* Consts.swift */,
 				2730CC4D1DC76125006172F3 /* CustomCells */,
 			);
