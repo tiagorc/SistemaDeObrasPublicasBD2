@@ -43,5 +43,17 @@ class Database: NSObject {
         }
         return users
     }
+    
+    func getAllMaintenceTeams() -> [MaintenceModel] {
+        var mtm: [MaintenceModel] = []
+        let defaults = UserDefaults.standard
+        if let data  = defaults.object(forKey: "maintences")  {
+            let mt = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [MaintenceModel]
+            mtm = mt
+        }
+        return mtm
+    }
+    
+    
 
 }
