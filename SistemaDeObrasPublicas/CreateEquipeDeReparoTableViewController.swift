@@ -130,4 +130,7 @@ class CreateEquipeDeReparoTableViewController: UITableViewController {
         }
     }
 
+    @IBAction func cancelar(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

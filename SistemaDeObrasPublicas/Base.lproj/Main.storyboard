@@ -512,7 +512,7 @@
             </objects>
             <point key="canvasLocation" x="1076" y="1655"/>
         </scene>
-        <!--Maintance Table View Controller-->
+        <!--Equipes de Reparo-->
         <scene sceneID="5Gh-cM-44p">
             <objects>
                 <tableViewController id="tj5-1i-YTF" customClass="MaintanceTableViewController" customModule="SistemaDeObrasPublicas" customModuleProvider="target" sceneMemberID="viewController">
@@ -551,7 +551,7 @@
                             <outlet property="delegate" destination="tj5-1i-YTF" id="gkf-qa-0Ai"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="OLy-sv-Xvz">
+                    <navigationItem key="navigationItem" title="Equipes de Reparo" id="OLy-sv-Xvz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zcd-h6-KGm">
                             <connections>
                                 <segue destination="Ar7-51-2Td" kind="presentation" id="9hw-J9-MCp"/>
@@ -566,7 +566,7 @@
             </objects>
             <point key="canvasLocation" x="2015.2" y="2482.3088455772117"/>
         </scene>
-        <!--Damages Table View Controller-->
+        <!--Danos-->
         <scene sceneID="xI3-xq-UeD">
             <objects>
                 <tableViewController id="Qa6-2Z-E4S" customClass="DamagesTableViewController" customModule="SistemaDeObrasPublicas" customModuleProvider="target" sceneMemberID="viewController">
@@ -605,7 +605,7 @@
                             <outlet property="delegate" destination="Qa6-2Z-E4S" id="NSR-aj-wCV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="J3w-rf-aD9">
+                    <navigationItem key="navigationItem" title="Danos" id="J3w-rf-aD9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wjR-aR-OUG">
                             <connections>
                                 <segue destination="LFS-Js-ko7" kind="presentation" id="P7c-gb-8Oo"/>
@@ -620,7 +620,7 @@
             </objects>
             <point key="canvasLocation" x="2013.5999999999999" y="1654.7226386806599"/>
         </scene>
-        <!--Create Damage View Controller-->
+        <!--Adicionar Dano-->
         <scene sceneID="0oS-Sq-qkf">
             <objects>
                 <viewController id="KLQ-b9-QqU" customClass="CreateDamageViewController" customModule="SistemaDeObrasPublicas" customModuleProvider="target" sceneMemberID="viewController">
@@ -670,12 +670,18 @@
                                             <action selector="saveButton:" destination="KLQ-b9-QqU" id="EW0-dl-gw5"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="03I-zX-w1D"/>
+                                    <barButtonItem title="Cancelar" id="TTT-uZ-yd0">
+                                        <connections>
+                                            <action selector="cancelar:" destination="KLQ-b9-QqU" id="wdc-5U-GaW"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7DT-cW-o50"/>
+                    <navigationItem key="navigationItem" title="Adicionar Dano" id="7DT-cW-o50"/>
                     <connections>
                         <outlet property="descricaoTextField" destination="EuL-Q1-pOR" id="9DX-Ha-Chb"/>
                         <outlet property="idBuraco" destination="rHd-U5-RRu" id="itx-82-egM"/>
@@ -743,16 +749,16 @@
             </objects>
             <point key="canvasLocation" x="2861.5999999999999" y="2481.4092953523241"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Ordens de Serviço-->
         <scene sceneID="TD4-YC-TaI">
             <objects>
-                <tableViewController id="SgG-r7-Cbv" sceneMemberID="viewController">
+                <tableViewController id="SgG-r7-Cbv" customClass="OSTableViewController" customModule="SistemaDeObrasPublicas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WHv-10-15O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ordemdeservico" textLabel="sap-Rf-GPB" detailTextLabel="QDk-9H-0kM" rowHeight="70" style="IBUITableViewCellStyleValue1" id="r7o-jl-OuS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="oss" textLabel="sap-Rf-GPB" detailTextLabel="QDk-9H-0kM" rowHeight="70" style="IBUITableViewCellStyleValue1" id="r7o-jl-OuS">
                                 <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r7o-jl-OuS" id="zic-K2-bls">
@@ -782,22 +788,25 @@
                             <outlet property="delegate" destination="SgG-r7-Cbv" id="bZt-SG-TfG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="m3y-i1-3LI">
+                    <navigationItem key="navigationItem" title="Ordens de Serviço" id="m3y-i1-3LI">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hfg-oG-SUz">
                             <connections>
                                 <segue destination="QD8-gb-5py" kind="presentation" id="qcK-fT-GoO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="osTableView" destination="WHv-10-15O" id="AGS-jt-8gg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zX-Eq-zQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2015" y="3303"/>
         </scene>
-        <!--View Controller-->
+        <!--Escolha o Buraco e a Equipe -->
         <scene sceneID="fLW-k0-Wmq">
             <objects>
-                <viewController id="1sF-Wu-f6j" sceneMemberID="viewController">
+                <viewController id="1sF-Wu-f6j" customClass="CreateOSViewController" customModule="SistemaDeObrasPublicas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fpc-p9-aO3"/>
                         <viewControllerLayoutGuide type="bottom" id="htV-Gn-VlN"/>
@@ -805,18 +814,46 @@
                     <view key="view" contentMode="scaleToFill" id="KvU-vT-9el">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DFT-ro-cyb">
+                                <rect key="frame" x="0.0" y="146" width="375" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4a6-rp-sDn">
+                                <rect key="frame" x="0.0" y="282" width="375" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zdR-lO-I0p"/>
+                    <toolbarItems>
+                        <barButtonItem title="Salvar" id="9YD-Ux-oSa">
+                            <connections>
+                                <action selector="saveButtonAction:" destination="1sF-Wu-f6j" id="wsG-c7-JOF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jQ9-jQ-dzN"/>
+                        <barButtonItem title="Cancelar" id="j37-2c-Hgt">
+                            <connections>
+                                <action selector="cancelar:" destination="1sF-Wu-f6j" id="ntp-tZ-Fys"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Escolha o Buraco e a Equipe " id="zdR-lO-I0p"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="buracoPicker" destination="DFT-ro-cyb" id="1k9-2h-E6r"/>
+                        <outlet property="teamPicker" destination="4a6-rp-sDn" id="8t3-XK-a91"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLw-DF-bCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3801" y="3303"/>
+            <point key="canvasLocation" x="3800.8000000000002" y="3302.698650674663"/>
         </scene>
         <!--Ordem de Serviço-->
         <scene sceneID="byu-rv-WsK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QKd-gk-TGW" sceneMemberID="viewController">
+                <navigationController title="Ordem de Serviço" automaticallyAdjustsScrollViewInsets="NO" id="QKd-gk-TGW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Ordem de Serviço" image="service" id="E33-27-r64"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xPb-0P-R3G">
@@ -850,10 +887,10 @@
             </objects>
             <point key="canvasLocation" x="2862" y="3303"/>
         </scene>
-        <!--Usuários-->
+        <!--Selecione os Componentes-->
         <scene sceneID="s18-2x-zPO">
             <objects>
-                <tableViewController id="2cH-Zn-3xi" customClass="CreateEquipeDeReparoTableViewController" customModule="SistemaDeObrasPublicas" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Selecione os Componentes" id="2cH-Zn-3xi" customClass="CreateEquipeDeReparoTableViewController" customModule="SistemaDeObrasPublicas" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="MNB-ju-gAq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -904,8 +941,14 @@
                                 <action selector="saveButtonAction:" destination="2cH-Zn-3xi" id="gYG-1Q-lNB"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5IB-h2-9Xm"/>
+                        <barButtonItem title="Cancelar" id="bKR-BH-fQh">
+                            <connections>
+                                <action selector="cancelar:" destination="2cH-Zn-3xi" id="K07-GN-HRb"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Usuários" id="TLb-NZ-iCs"/>
+                    <navigationItem key="navigationItem" title="Selecione os Usuários" id="TLb-NZ-iCs"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="usersTable" destination="MNB-ju-gAq" id="bE8-Zk-aUj"/>

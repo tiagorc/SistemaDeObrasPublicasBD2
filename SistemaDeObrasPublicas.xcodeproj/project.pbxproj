@@ -24,6 +24,9 @@
 		273E8D981DE51790006D858C /* CreateEquipeDeReparoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D971DE51790006D858C /* CreateEquipeDeReparoTableViewController.swift */; };
 		273E8D9A1DE51C5B006D858C /* MaintenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D991DE51C5B006D858C /* MaintenceModel.swift */; };
 		273E8D9C1DE51EAC006D858C /* MaintanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D9B1DE51EAC006D858C /* MaintanceTableViewController.swift */; };
+		273E8D9E1DE52099006D858C /* OSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D9D1DE52099006D858C /* OSModel.swift */; };
+		273E8DA01DE522A5006D858C /* CreateOSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8D9F1DE522A5006D858C /* CreateOSViewController.swift */; };
+		273E8DA21DE52713006D858C /* OSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E8DA11DE52713006D858C /* OSTableViewController.swift */; };
 		2757570E1DD63AC700B0B06E /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 275757051DD63AC700B0B06E /* FMDatabase.m */; };
 		2757570F1DD63AC700B0B06E /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 275757071DD63AC700B0B06E /* FMResultSet.m */; };
 		275757101DD63AC700B0B06E /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 275757091DD63AC700B0B06E /* FMDatabaseQueue.m */; };
@@ -59,6 +62,9 @@
 		273E8D971DE51790006D858C /* CreateEquipeDeReparoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEquipeDeReparoTableViewController.swift; sourceTree = "<group>"; };
 		273E8D991DE51C5B006D858C /* MaintenceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaintenceModel.swift; sourceTree = "<group>"; };
 		273E8D9B1DE51EAC006D858C /* MaintanceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaintanceTableViewController.swift; sourceTree = "<group>"; };
+		273E8D9D1DE52099006D858C /* OSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSModel.swift; sourceTree = "<group>"; };
+		273E8D9F1DE522A5006D858C /* CreateOSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOSViewController.swift; sourceTree = "<group>"; };
+		273E8DA11DE52713006D858C /* OSTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSTableViewController.swift; sourceTree = "<group>"; };
 		275757021DD63AC600B0B06E /* SistemaDeObrasPublicas-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SistemaDeObrasPublicas-Bridging-Header.h"; sourceTree = "<group>"; };
 		275757031DD63AC700B0B06E /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		275757041DD63AC700B0B06E /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -134,7 +140,9 @@
 				27735EF01DCB6B53002C0EAB /* CreateHoleViewController.swift */,
 				273E8D9B1DE51EAC006D858C /* MaintanceTableViewController.swift */,
 				273E8D971DE51790006D858C /* CreateEquipeDeReparoTableViewController.swift */,
+				273E8D9F1DE522A5006D858C /* CreateOSViewController.swift */,
 				273E8D951DE50C5B006D858C /* DamagesTableViewController.swift */,
+				273E8DA11DE52713006D858C /* OSTableViewController.swift */,
 				27735EEE1DCB6B43002C0EAB /* CreateUserViewController.swift */,
 			);
 			name = Controller;
@@ -152,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				2730CC501DC7624E006172F3 /* UserModel.swift */,
+				273E8D9D1DE52099006D858C /* OSModel.swift */,
 				273E8D8F1DE4FFFB006D858C /* DamageModel.swift */,
 				273E8D991DE51C5B006D858C /* MaintenceModel.swift */,
 				27B2340E1DD9D1690037D8D5 /* DistrictModel.swift */,
@@ -284,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273E8DA01DE522A5006D858C /* CreateOSViewController.swift in Sources */,
 				2730CC511DC7624E006172F3 /* UserModel.swift in Sources */,
 				27B234111DD9D1910037D8D5 /* CityModel.swift in Sources */,
 				27B2340B1DD935990037D8D5 /* Consts.swift in Sources */,
@@ -295,9 +305,11 @@
 				275757101DD63AC700B0B06E /* FMDatabaseQueue.m in Sources */,
 				275757111DD63AC700B0B06E /* FMDatabaseAdditions.m in Sources */,
 				273E8D921DE502AE006D858C /* CreateDamageViewController.swift in Sources */,
+				273E8D9E1DE52099006D858C /* OSModel.swift in Sources */,
 				2730CC481DC75EDD006172F3 /* HoleViewControllerTableViewController.swift in Sources */,
 				27B234131DD9D1B00037D8D5 /* StateModel.swift in Sources */,
 				275757121DD63AC700B0B06E /* FMDatabasePool.m in Sources */,
+				273E8DA21DE52713006D858C /* OSTableViewController.swift in Sources */,
 				273E8D941DE50BA9006D858C /* Database.swift in Sources */,
 				27B2340F1DD9D1690037D8D5 /* DistrictModel.swift in Sources */,
 				273E8D961DE50C5B006D858C /* DamagesTableViewController.swift in Sources */,

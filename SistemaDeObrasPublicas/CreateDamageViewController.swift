@@ -83,6 +83,9 @@ class CreateDamageViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func cancelar(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
 }
 

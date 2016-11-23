@@ -54,6 +54,13 @@ class Database: NSObject {
         return mtm
     }
     
-    
-
+    func getAllOSs() -> [OSModel] {
+        var oss: [OSModel] = []
+        let defaults = UserDefaults.standard
+        if let data  = defaults.object(forKey: "oss")  {
+            let os = NSKeyedUnarchiver.unarchiveObject(with: (data as! NSData) as Data) as! [OSModel]
+            oss = os
+        }
+        return oss
+    }
 }
